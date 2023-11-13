@@ -1,6 +1,5 @@
 using System;
 
-
 class JournalEntry
 {
     public string Prompt { get; set; }

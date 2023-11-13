@@ -1,5 +1,3 @@
-using System;
-
 class Program
 {
     static void Main(string[] args)
@@ -23,9 +21,14 @@ class Program
             Console.WriteLine("2. Display the journal");
             Console.WriteLine("3. Save the journal to a file");
             Console.WriteLine("4. Load the journal from a file");
-            Console.WriteLine("5. Quit");
+            Console.WriteLine("5. Display Average Response Length");
+            Console.WriteLine("6. Quit");
 
-            int choice = int.Parse(Console.ReadLine());
+            int choice;
+            while (!int.TryParse(Console.ReadLine(), out choice))
+            {
+                Console.WriteLine("Invalid input. Please enter a number.");
+            }
 
             switch (choice)
             {
@@ -52,6 +55,9 @@ class Program
                     journal.LoadFromFile(loadFilename);
                     break;
                 case 5:
+                    journal.DisplayAverageResponseLength();
+                    break;
+                case 6:
                     Environment.Exit(0);
                     break;
                 default:

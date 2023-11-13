@@ -22,7 +22,7 @@ class Journal
         {
             foreach (var entry in entries)
             {
-                writer.WriteLine($"{entry.Date}|{entry.Prompt}|{entry.Response}");
+                writer.WriteLine($"{entry.Date},{entry.Prompt},{entry.Response}");
             }
         }
     }
@@ -30,14 +30,36 @@ class Journal
     public void LoadFromFile(string filename)
     {
         entries.Clear();
-        string[] lines = File.ReadAllLines(filename);
-        foreach (var line in lines)
+
+        // This will Check if the file exists in system
+        if (!File.Exists(filename))
         {
-            string[] parts = line.Split('|');
-            if (parts.Length == 3)
+            Console.WriteLine($"Error: File '{filename}' not found.");
+            return;
+        }
+
+        try
+        {
+            string[] lines = File.ReadAllLines(filename);
+            foreach (var line in lines)
             {
-                entries.Add(new JournalEntry(parts[1], parts[2], parts[0]));
+                string[] parts = line.Split(',');
+                if (parts.Length == 3)
+                {
+                    entries.Add(new JournalEntry(parts[1], parts[2], parts[0]));
+                }
             }
         }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error loading file: {ex.Message}");
+        }
+    }
+
+    // Exceeding Requirement: This will be able to calculate and display the average length of responses.
+    public void DisplayAverageResponseLength()
+    {
+        double averageLength = entries.Select(entry => entry.Response.Length).Average();
+        Console.WriteLine($"Average Response Length: {averageLength:F2} characters");
     }
 }
