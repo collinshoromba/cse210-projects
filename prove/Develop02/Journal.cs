@@ -31,7 +31,7 @@ class Journal
     {
         entries.Clear();
 
-        // This will Check if the file exists in system
+
         if (!File.Exists(filename))
         {
             Console.WriteLine($"Error: File '{filename}' not found.");
@@ -56,7 +56,7 @@ class Journal
         }
     }
 
-    // Exceeding Requirement: This will be able to calculate and display the average length of responses.
+    
     public void DisplayAverageResponseLength()
     {
         double averageLength = entries.Select(entry => entry.Response.Length).Average();

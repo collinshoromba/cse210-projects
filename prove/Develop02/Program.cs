@@ -67,3 +67,8 @@ class Program
         }
     }
 }
+
+
+//I have include the attributes like Prompt, Response, and Date represent the content of a journal entry in the JournalEntry class.
+//In the exceeding requirements it calculates and displays the average length of responses in the journal. Which provides additional insights into the user journaling habits.
+//It took me a while to get the concept.
