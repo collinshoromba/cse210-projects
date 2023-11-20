@@ -4,17 +4,17 @@ class ScriptureApp
 {
     public static void Run()
     {
-        // Create a library of scriptures
+        //library of scriptures
         ScriptureLibrary scriptureLibrary = new ScriptureLibrary();
-        scriptureLibrary.LoadScriptures(); // You can implement loading from a file or other sources
+        scriptureLibrary.LoadScriptures(); // This can load from a file
 
-        // Select a random scripture from the library
+        //This selects a random scripture from the library
         Scripture selectedScripture = scriptureLibrary.GetRandomScripture();
 
-        // Display the complete scripture
+        // This display the complete scripture
         DisplayScripture(selectedScripture);
 
-        // Start hiding words until all words are hidden
+        // this hide words until all words are hidden
         while (!selectedScripture.AllWordsHidden)
         {
             Console.WriteLine("Press Enter to hide more words or type 'quit' to end.");
