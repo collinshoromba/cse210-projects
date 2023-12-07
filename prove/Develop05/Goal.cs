@@ -34,7 +34,7 @@ class Goal
     {
         string[] parts = data.Split(',');
 
-        // Make sure the array has enough elements before accessing them
+        
         if (parts.Length >= 3)
         {
             Name = parts[0];
